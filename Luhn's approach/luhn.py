@@ -18,11 +18,10 @@ filtered_words = [word for word in word_list if word.lower() not in stopwords.wo
 total_words = len(filtered_words)
 words = filtered_words
 
-
 # find n-gram probability for filtered words
 filtered_words  = []
 for each in Counter(words).items():
-	filtered_words.append([each[0],float(each[1])/float(total_words)])
+	filtered_words.append([each[0] , float(each[1])/float(total_words)])
 
 # identify important words
 important_words = []
@@ -30,6 +29,8 @@ for item in filtered_words:
 	if item[1]>0.003:
 		important_words.append(item[0])
 
+while '. ' in text:
+	text = text.replace('. ','\n') 
 # calculate sentence score
 while "\n" in text:
 	text = text.split("\n")
@@ -43,13 +44,13 @@ for sentence in text:
 			count = count +1
 		if word in sentence and word not in stopwords.words('english'):
 			score = score + 1
-	sentenceScore.append([sentence,float(score)/float(count)**(1/2)])
+	sentenceScore.append([sentence,float(score)/float(len(important_words))**(1/2)])
 
 # extract top n/5 sentences (n is total number of sentences in the text)
 sen = sentenceScore
 sentenceScore.sort(key=lambda x: x[1], reverse=True)
 print len(sentenceScore)
-cutScore = sentenceScore[len(sentenceScore)/5][1]
+cutScore = sentenceScore[len(sentenceScore)/7][1]
 
 count = 0
 for sentence in sen:
