@@ -31,7 +31,7 @@ To run the files: <br>
 	2) it will open a notebook in browser<br>
 	3) open code in the browser from the list<br>
 	4) press shift + Enter to run each cell in the notebook<br>
-	5) ouput for each cell would be printed in the same notebook<br>
+	5) output for each cell would be printed in the same notebook<br>
 	
 References for the implementation:<br>
 1] http://nlpforhackers.io/textrank-text-summarization/<br>
